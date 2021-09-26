@@ -5,15 +5,15 @@ import datetime
 import pandas as pd
 
 URL = 'https://mimorin2014.blog.fc2.com/blog-date-\
-                    {year:4d}{month:2d}{date:2d}.html'
+                    {year:4d}{month:2d}{day:2d}.html'
 
 
-def get_dateURL(year, month, date):
-    return URL.format(year=year, month=month, date=date)
+def get_dateURL(year, month, day):
+    return URL.format(year=year, month=month, day=day)
 
 
-def get_ranking(year, month, date):
-    res = requests.get(get_dateURL(year, month, date))
+def get_ranking(year, month, day):
+    res = requests.get(get_dateURL(year, month, day))
     soup = BeautifulSoup(res.text, 'html.parser')
     tags = soup.find_all(class_="content entry grid_content")
     for tag in tags:
