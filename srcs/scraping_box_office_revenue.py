@@ -30,4 +30,4 @@ def get_ranking(year, month, date):
 
 def get_latest_ranking():
     now = datetime.datetime.now()
-    return get_ranking(now.year, now.month, now.date - 1)
+    return get_ranking(now.year, now.month, now.day - 1)
