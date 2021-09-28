@@ -25,9 +25,15 @@ def get_ranking(year, month, day):
             parse_text = parse_text.replace('　', ',').splitlines()[3:-2]
             df = pd.read_csv(io.StringIO('\n'.join(parse_text)), header=None,
                              usecols=[0, 6], names=['rank', 'title'])
+            df = df.set_index('rank')
             return df
+    return None
 
 
 def get_latest_ranking():
     now = datetime.datetime.now()
     return get_ranking(now.year, now.month, now.day - 1)
+
+
+if __name__ == '__main__':
+    print(get_latest_ranking())
