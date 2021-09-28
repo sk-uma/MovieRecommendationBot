@@ -19,7 +19,8 @@ RUN apt-get install -y wget \
                        graphviz \
                        vim \
                        curl \
-                       git
+                       git \
+                       cron
 
 # CRF install
 RUN wget -O CRF++-0.58.tar.gz 'https://drive.google.com/uc?export=download&id=0B4y35FiV1wh7QVR6VXJ5dWExSTQ' && \
@@ -50,12 +51,12 @@ RUN wget -O mecab-0.996.tar.gz 'https://drive.google.com/uc?export=download&id=0
 RUN curl -O http://www.cl.ecei.tohoku.ac.jp/~m-suzuki/jawiki_vector/data/20170201.tar.bz2 && \
     tar -jxvf 20170201.tar.bz2
 
+# chatBot setup
 RUN mkdir -p /root/chatBot
-
 COPY . /root/chatBot
-
 RUN mkdir -p /root/chatBot/word2vec_model && \
     cp entity_vector/entity_vector.model.bin chatBot/word2vec_model
+RUN mkdir -p /root/chatBot/json_data
 
 # python lib
 RUN pip install requests \
