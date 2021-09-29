@@ -66,6 +66,8 @@ RUN pip install requests \
                 gensim \
                 mecab-python3 \
                 beautifulsoup4 \
-                pycodestyle
+                pycodestyle \
+                python-telegram-bot==12.0.0 \
+                python-dotenv
 
 CMD /bin/bash setup.sh
