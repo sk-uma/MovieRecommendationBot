@@ -42,5 +42,6 @@ def reload_ranking_json():
     with open(DATAFILE_PATH, 'w') as f:
         f.write(json_text)
 
+
 if __name__ == '__main__':
     reload_ranking_json()
