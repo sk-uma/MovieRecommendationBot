@@ -1,6 +1,7 @@
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import os
 from dotenv import dotenv_values
+from get_ranking import get_ranking
 
 temp = dotenv_values(".env")
 TOKEN = temp["TELEGRAM_APIKEY"]
