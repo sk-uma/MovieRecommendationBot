@@ -15,11 +15,11 @@ def get_most_similar_category(word):
         score = model.similarity(word, category['name'])
         if score > max_score:
             max_score = score
-            max_score_category = category['name']
+            max_score_category = category
         score = model.similarity(word, '[' + category['name'] + ']')
         if score > max_score:
             max_score = score
-            max_score_category = category['name']
+            max_score_category = category
     return max_score_category, max_score
 
 

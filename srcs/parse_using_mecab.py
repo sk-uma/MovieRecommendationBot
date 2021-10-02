@@ -67,7 +67,6 @@ def parse_using_mecab(message):
         names_tmp, info_tmp = parse_sentence_using_mecab(line)
         names = names + names_tmp
         info = info + info_tmp
-    print(message, end="\n                     -> ")
     return names, info
 
 
