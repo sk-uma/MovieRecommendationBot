@@ -13,7 +13,7 @@ def parse_message(message):
         if category is not None:
             if max_score < score:
                 max_score_category = category
-    return parse[0], max_score_category
+    return parse[0], parse[1], max_score_category
 
 if __name__ == '__main__':
     print(parse_message('サイエンスフィクション'))
