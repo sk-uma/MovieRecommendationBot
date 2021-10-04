@@ -13,7 +13,7 @@ random.seed(42)
 
 class TMDB:
     def __init__(self, token):
-        self.token = TOKEN
+        self.token = token
         self.headers_ = {
             'Authorization': f'Bearer {self.token}',
             'Content-Type': 'application/json;charset=utf-8'
