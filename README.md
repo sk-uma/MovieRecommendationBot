@@ -3,7 +3,7 @@ Bot using telegram API
 
 ### 実行方法
 
-ディレクトリ .env ファイルを作成し[TELEGRAM_APIKEY](https://core.telegram.org/), [TMDB_APIKEY](https://developers.themoviedb.org/3/getting-started)を記述
+.env ファイルを作成し[TELEGRAM_APIKEY](https://core.telegram.org/), [TMDB_APIKEY](https://developers.themoviedb.org/3/getting-started)を記述
 
 ```shell
 $> cat .env
