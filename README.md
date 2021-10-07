@@ -1,1 +1,2 @@
-# ChatBot
+# MovieRecommendationBot
+Bot using telegram API
