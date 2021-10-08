@@ -53,7 +53,7 @@ class TMDB:
         return self._json_by_get_request(url, params)
 
     def get_movie_images(self, movie_id, language=None):
-        params = {'language': 'ja', 'include_adult': False}
+        params = {'include_adult': False}
         url = f'{self.base_url_}movie/{movie_id}/images'
         return self._json_by_get_request(url, params)
 
@@ -251,3 +251,4 @@ if __name__ == '__main__':
     display(get_movies(['トム'], ['クルーズ'], {'id': 12, 'name': 'アドベンチャー'}))
     display(get_movies(['山本美月', '甲本雅裕'], ['怖い'], {'id': 27, 'name': 'ホラー'}))
     display(get_movies([], ['ドラえもん'], None))
+    display(get_movies([], ['人気'], {'id': 35, 'name': 'コメディ'}))

@@ -3,8 +3,9 @@ from bs4 import BeautifulSoup
 import io
 import datetime
 import pandas as pd
+from get_movie import get_movies_for_query, get_poster_url
 
-DATAFILE_PATH = '../json_data/ranking.json'
+DATAFILE_PATH = '/root/chatBot/csv_data/ranking.csv'
 URL = 'https://mimorin2014.blog.fc2.com/blog-date-\
                     {year:4d}{month:2d}{day:2d}.html'
 
@@ -36,12 +37,25 @@ def scraping_latest_ranking():
     return scraping_ranking(now.year, now.month, now.day - 1)
 
 
-def reload_ranking_json():
+def reload_ranking_csv():
     df = scraping_latest_ranking()
-    json_text = df.to_json()
+    new_df = pd.DataFrame(columns=['title', 'rank', 'URL'])
+    new_df = new_df.set_index('rank')
+    for _, row in df.iterrows():
+        movies = get_movies_for_query(row['title'], n=1)
+        if len(movies) != 0:
+            movie = movies[0]
+            poster_url = get_poster_url(movie)
+            new_df = new_df.append({
+                'title': movie['title'],
+                'URL': poster_url
+            }, ignore_index=True)
+        if new_df.shape[0] >= 3:
+            break
+    csv_text = new_df.to_csv()
     with open(DATAFILE_PATH, 'w') as f:
-        f.write(json_text)
+        f.write(csv_text)
 
 
 if __name__ == '__main__':
-    reload_ranking_json()
+    reload_ranking_csv()

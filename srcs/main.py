@@ -2,6 +2,7 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import os
 from dotenv import dotenv_values
 from get_ranking import get_ranking
+from reply_message import reply_message
 
 temp = dotenv_values(".env")
 TOKEN = temp["TELEGRAM_APIKEY"]
@@ -15,18 +16,16 @@ class SampleBot:
         self.counter = 0
 
     def start(self, bot, update):
-        update.message.reply_text('''開始メッセージ（あとで考える）''')
+        update.message.reply_text('''こんにちは！本サービスをご利用いただきありがとうございます。
+あなたの観たい映画について教えてください''')
 
     def message(self, bot, update):
         print('カウンター：', self.counter)
 
         if self.counter == 0:
             user_input = update.message.text
-            if '興行収入ランキング' in user_input:
-                print('興行収入ランキングを表示')
-                self.counter = 0
-            else:
-                print('推薦処理へ移行')
+            update.message.reply_text('そんなあなたにオススメの映画はこちらです！')
+            reply_message(user_input, update)
 
     def run(self):
         updater = Updater(TOKEN)

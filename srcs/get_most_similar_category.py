@@ -1,7 +1,7 @@
 from gensim.models import KeyedVectors
 from get_jp_category import get_jp_category
 
-W2V_PATH = '../word2vec_model/entity_vector.model.bin'
+W2V_PATH = '/root/chatBot/word2vec_model/entity_vector.model.bin'
 model = KeyedVectors.load_word2vec_format(W2V_PATH, binary=True)
 
 

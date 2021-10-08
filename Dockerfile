@@ -56,7 +56,7 @@ RUN mkdir -p /root/chatBot
 COPY . /root/chatBot
 RUN mkdir -p /root/chatBot/word2vec_model && \
     cp entity_vector/entity_vector.model.bin chatBot/word2vec_model
-RUN mkdir -p /root/chatBot/json_data
+RUN mkdir -p /root/chatBot/csv_data
 
 # python lib
 RUN pip install requests \
