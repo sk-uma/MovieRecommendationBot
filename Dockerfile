@@ -54,6 +54,7 @@ RUN curl -O http://www.cl.ecei.tohoku.ac.jp/~m-suzuki/jawiki_vector/data/2017020
 # chatBot setup
 RUN mkdir -p /root/chatBot
 COPY . /root/chatBot
+COPY .env /root/chatBot/.env
 RUN mkdir -p /root/chatBot/word2vec_model && \
     cp entity_vector/entity_vector.model.bin chatBot/word2vec_model
 RUN mkdir -p /root/chatBot/csv_data
